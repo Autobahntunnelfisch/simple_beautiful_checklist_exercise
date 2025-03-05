@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_beautiful_checklist_exercise/features/task_list/widgets/empty_content.dart';
 import 'package:simple_beautiful_checklist_exercise/features/task_list/widgets/item_list.dart';
-import 'package:simple_beautiful_checklist_exercise/shared/database_repository.dart';
+import 'package:simple_beautiful_checklist_exercise/shared/shared_preferences_repository.dart'; // Importiere die neue Klasse
 
 class ListScreen extends StatefulWidget {
   const ListScreen({
@@ -9,7 +9,8 @@ class ListScreen extends StatefulWidget {
     required this.repository,
   });
 
-  final DatabaseRepository repository;
+  final SharedPreferencesRepository
+      repository; // Verwende SharedPreferencesRepository
 
   @override
   State<ListScreen> createState() => _ListScreenState();

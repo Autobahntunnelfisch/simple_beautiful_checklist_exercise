@@ -31,8 +31,14 @@ class SharedPreferencesRepository {
     await prefs.setStringList('items', items);
   }
 
-  Future<void> editItem(String key, String newValue) async {
+  Future<void> editItem(int index, String newValue) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString(key, newValue); // Speichert den neuen Wert
+    final List<String> items = prefs.getStringList('items') ?? [];
+    if (index >= 0 && index < items.length) {
+      items[index] =
+          newValue; // Bearbeitet den Wert an der entsprechenden Stelle
+      await prefs.setStringList(
+          'items', items); // Speichert die Liste nach der Bearbeitung
+    }
   }
 }

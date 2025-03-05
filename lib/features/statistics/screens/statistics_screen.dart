@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_beautiful_checklist_exercise/features/statistics/widgets/task_counter_card.dart';
-import 'package:simple_beautiful_checklist_exercise/shared/database_repository.dart';
+import 'package:simple_beautiful_checklist_exercise/shared/shared_preferences_repository.dart'; // Verwende das Repository
 
 class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen({
@@ -8,7 +8,7 @@ class StatisticsScreen extends StatefulWidget {
     required this.repository,
   });
 
-  final DatabaseRepository repository;
+  final SharedPreferencesRepository repository; // Verwende das Repository
 
   @override
   State<StatisticsScreen> createState() => _StatisticsScreenState();

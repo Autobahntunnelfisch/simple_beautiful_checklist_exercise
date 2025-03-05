@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:simple_beautiful_checklist_exercise/shared/database_repository.dart';
-import 'package:simple_beautiful_checklist_exercise/shared/mock_database.dart';
-
+import 'package:simple_beautiful_checklist_exercise/shared/shared_preferences_repository.dart';
 import 'features/splash/splash_screen.dart';
 import 'home_screen.dart';
 
@@ -10,8 +8,9 @@ void main() async {
   // Wird benötigt, um auf SharedPreferences zuzugreifen
   WidgetsFlutterBinding.ensureInitialized();
 
-  // TODO: Hier statt MockDatabase() ein SharedPreferencesRepository() verwenden.
-  final DatabaseRepository repository = MockDatabase();
+  // Instanziiere das SharedPreferencesRepository und initialisiere es
+  final SharedPreferencesRepository repository = SharedPreferencesRepository();
+  await repository.getItems(); // Initialisiere SharedPreferences
 
   runApp(MainApp(repository: repository));
 }
@@ -22,7 +21,7 @@ class MainApp extends StatelessWidget {
     required this.repository,
   });
 
-  final DatabaseRepository repository;
+  final SharedPreferencesRepository repository;
 
   @override
   Widget build(BuildContext context) {

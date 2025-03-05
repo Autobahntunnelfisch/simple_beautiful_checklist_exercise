@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_beautiful_checklist_exercise/shared/database_repository.dart';
+import 'package:simple_beautiful_checklist_exercise/shared/shared_preferences_repository.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({
@@ -9,7 +9,7 @@ class ItemList extends StatelessWidget {
     required this.updateOnChange,
   });
 
-  final DatabaseRepository repository;
+  final SharedPreferencesRepository repository;
   final List<String> items;
   final void Function() updateOnChange;
 
@@ -63,7 +63,7 @@ class ItemList extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.delete),
                 onPressed: () {
-                  repository.deleteItem(index);
+                  repository.removeItem("item_$index");
                   updateOnChange();
                 },
               ),
